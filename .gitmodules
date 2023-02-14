@@ -1,0 +1,3 @@
+[submodule "joybus-pio"]
+	path = joybus-pio
+	url = https://github.com/JonnyHaystack/joybus-pio.git
