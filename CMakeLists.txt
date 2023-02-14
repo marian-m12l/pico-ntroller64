@@ -33,7 +33,7 @@ include_directories(joybus-pio/include)
 
 pico_generate_pio_header(pico-ntroller64 ${CMAKE_CURRENT_LIST_DIR}/joybus-pio/src/joybus.pio)
 
-target_link_libraries(pico-ntroller64 pico_stdlib hardware_pio pico_cyw43_arch_none)
+target_link_libraries(pico-ntroller64 pico_stdlib hardware_pio pico_cyw43_arch_none pico_multicore)
 
 pico_enable_stdio_usb(pico-ntroller64 1)
 pico_enable_stdio_uart(pico-ntroller64 0)
