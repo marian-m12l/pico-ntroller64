@@ -21,6 +21,13 @@ add_compile_options(-Wall
         )
 
 
+# Bluetooth
+set(BTSTACK_ROOT ${PICO_SDK_PATH}/lib/btstack)
+set(BTSTACK_EXAMPLE_PATH ${BTSTACK_ROOT}/example)
+set(BTSTACK_3RD_PARTY_PATH ${BTSTACK_ROOT}/3rd-party)
+include_directories(src/config)
+suppress_btstack_warnings()
+
 # Add project
 add_executable(
   pico-ntroller64
@@ -33,7 +40,15 @@ include_directories(joybus-pio/include)
 
 pico_generate_pio_header(pico-ntroller64 ${CMAKE_CURRENT_LIST_DIR}/joybus-pio/src/joybus.pio)
 
-target_link_libraries(pico-ntroller64 pico_stdlib hardware_pio pico_cyw43_arch_none pico_multicore)
+
+target_link_libraries(pico-ntroller64
+        pico_stdlib
+        hardware_pio
+        pico_multicore
+        pico_btstack_classic
+        pico_btstack_cyw43
+        pico_cyw43_arch_none
+        )
 
 pico_enable_stdio_usb(pico-ntroller64 1)
 pico_enable_stdio_uart(pico-ntroller64 0)
